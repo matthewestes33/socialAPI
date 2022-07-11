@@ -10,7 +10,7 @@ This application creates an API for a social media startup that uses a NoSQL dat
 
 ## Installation
 
-This application requires installation of npm (incl. nodemon), MongoDB, and Insomnia. 
+This application requires installation of npm (incl. express and nodemon), MongoDB, and Insomnia. 
 
 A walkthrough video can be viewed here: 
 
