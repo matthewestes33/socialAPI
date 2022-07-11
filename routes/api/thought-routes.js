@@ -17,16 +17,16 @@ const {
 } = require('../../controllers/thought-controller');
 
 
-// /api/thoughts
+// GET all thoughts and POST a new thought
 router.route('/').get(getThoughts).post(createThought);
 
-// /api/thoughts/:thoughtId
+// GET a single thought by id, PUT to update a thought by id, DELETE to remove a thought by id
 router.route('/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
 
-// /api/thoughts/:thoughtId/reactions
+// POST to create a reaction stored in single thought's reactions array field 
 router.route('/:thoughtId/reactions').post(addReaction);
 
-// /api/thoughts/:thoughtId/reactions/:reactionId
+// DELETE to pull and remove a reaction by reactionId 
 router.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);
 
 module.exports = router;
