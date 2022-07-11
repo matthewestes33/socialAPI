@@ -14,7 +14,7 @@ const userSchema = new Schema(
       required: true,
       unique: true,
       // regular expression to validate email in Mongoose
-      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Must match an email address!'],
+      match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,3})$/, 'Must match an email address!'],
     },
     thoughts: [
       {
