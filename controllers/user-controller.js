@@ -48,11 +48,16 @@ const userController = {
     // PUT to update user by id
     updateUser(req, res) {
         User.findOneAndUpdate(
+            // specifies the route parameter
             { _id: req.params.userId },
+            // updates the body data
             { $set: req.body, },
-            { runValidators: true, 
-            // returns new, updated document (instead of original document before update)
-            new: true, }
+            {
+                // validation of new object against schema turned on
+                runValidators: true,
+                // returns new, updated document (instead of original document before update)
+                new: true,
+            }
         )
             .then((dbUserData) => {
                 if (!dbUserData) {
@@ -67,6 +72,7 @@ const userController = {
     },
     // DELETE to remove user by id
     deleteUser(req, res) {
+        // specifies the route parameter
         User.findOneAndDelete({ _id: req.params.userId })
             .then((dbUserData) => {
                 if (!dbUserData) {
@@ -78,4 +84,46 @@ const userController = {
                 res.status(500).json(err);
             });
     },
+    // POST to add a new friend to a user's friend list
+    addFriend(req, res) {
+        User.findOneAndUpdate(
+            // specifies the route parameter
+            { _id: req.params.userId },
+            // adds friend unless friend is already present
+            { $addToSet: { friends: req.params.friendId } },
+            // returns new, updated document (instead of original document before update) 
+            { new: true })
+            .then((dbUserData) => {
+                if (!dbUserData) {
+                    return res.status(404).json({ message: 'No user with this id.' });
+                }
+                res.json(dbUserData);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
+    // DELETE to remove a friend from a user's friend list
+    removeFriend(req, res) {
+        User.findOneAndUpdate(
+            // specifies the route parameter
+            { _id: req.params.userId },
+            // pull the created friend's id by the associated user's friends array field
+            { $pull: { friends: req.params.friendId } },
+            // returns new, updated document (instead of original document before update)  
+            { new: true })
+            .then((dbUserData) => {
+                if (!dbUserData) {
+                    return res.status(404).json({ message: 'No user with this id.' });
+                }
+                res.json(dbUserData);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
 };
+
+module.exports = userController;

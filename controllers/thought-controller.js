@@ -57,11 +57,14 @@ const thoughtController = {
     updateThought(req, res) {
         Thought.findOneAndUpdate(
             // specifies the route parameter
-            { _id: req.params.thoughtId }, 
-            { $set: req.body }, 
-            { runValidators: true, 
-            // returns new, updated document (instead of original document before update)    
-            new: true })
+            { _id: req.params.thoughtId },
+            { $set: req.body },
+            {
+                // validation of new object against schema turned on
+                runValidators: true,
+                // returns new, updated document (instead of original document before update)    
+                new: true
+            })
             .then((dbThoughtData) => {
                 if (!dbThoughtData) {
                     return res.status(404).json({ message: 'No thought with this id.' });
@@ -79,7 +82,7 @@ const thoughtController = {
         Thought.findOneAndRemove({ _id: req.params.thoughtId })
             .then((dbThoughtData) => {
                 if (!dbThoughtData) {
-                    return res.status(404).json({ message: 'No thought with this id!' });
+                    return res.status(404).json({ message: 'No thought with this id' });
                 }
 
                 // remove thought id from user's `thoughts` field
@@ -93,9 +96,9 @@ const thoughtController = {
             })
             .then((dbUserData) => {
                 if (!dbUserData) {
-                    return res.status(404).json({ message: 'Thought created but no user with this id!' });
+                    return res.status(404).json({ message: 'Thought created but no user with this id.' });
                 }
-                res.json({ message: 'Thought successfully deleted!' });
+                res.json({ message: 'Thought deleted.' });
             })
             .catch((err) => {
                 console.log(err);
@@ -103,4 +106,56 @@ const thoughtController = {
             });
     },
 
+    // POST to create a reaction stored in a single thought's reactions array field
+    addReaction(req, res) {
+        Thought.findOneAndUpdate(
+            // specifies the route parameter
+            { _id: req.params.thoughtId },
+            // adds reaction unless reaction is already present
+            { $addToSet: { reactions: req.body } },
+            {
+                // validation of new object against schema turned on
+                runValidators: true,
+                // returns new, updated document (instead of original document before update)    
+                new: true
+            }
+        )
+            .then((dbThoughtData) => {
+                if (!dbThoughtData) {
+                    return res.status(404).json({ message: 'No thought with this id.' });
+                }
+                res.json(dbThoughtData);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
+    // DELETE to pull and remove a reaction by the reaction's reactionId value
+    removeReaction(req, res) {
+        Thought.findOneAndUpdate(
+            // specifies the route parameter
+            { _id: req.params.thoughtId },
+            // pull the created reaction's id by the associated user's reactions array field
+            { $pull: { reactions: { reactionId: req.params.reactionId } } },
+            {
+                // validation of new object against schema turned on
+                runValidators: true,
+                // returns new, updated document (instead of original document before update)    
+                new: true
+            }
+        )
+            .then((dbThoughtData) => {
+                if (!dbThoughtData) {
+                    return res.status(404).json({ message: 'No thought with this id.' });
+                }
+                res.json(dbThoughtData);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    },
 };
+
+module.exports = thoughtController;
