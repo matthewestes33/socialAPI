@@ -32,7 +32,7 @@ const userSchema = new Schema(
   },
   {
     toJSON: {
-    // virtuals because there is a virtual property in this schema
+      // virtuals because there is a virtual property in this schema
       virtuals: true,
     },
     id: false,

@@ -25,7 +25,7 @@ const reactionSchema = new Schema(
   },
   {
     toJSON: {
-    // getters because there is no virtual property in this schema
+      // getters because there is no virtual property in this schema
       getters: true
     },
     id: false

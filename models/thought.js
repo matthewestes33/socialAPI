@@ -25,7 +25,7 @@ const thoughtSchema = new Schema(
   },
   {
     toJSON: {
-    // virtuals because there is a virtual property in this schema
+      // virtuals because there is a virtual property in this schema
       virtuals: true
     },
     id: false
@@ -33,7 +33,7 @@ const thoughtSchema = new Schema(
 );
 
 // virtual property reactionCount that gets the amount of reactions per thought
-thoughtSchema.virtual('reactionCount').get(function() {
+thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
