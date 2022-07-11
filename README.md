@@ -6,11 +6,11 @@ This application creates an API for a social media startup that uses a NoSQL dat
 
 ## Mock-up
 
-![Insomnia screenshot.](./images/insomnia.jpg)
+![Insomnia screenshot.](./images/insomnia.jpg) *ADD SCREENSHOT*
 
 ## Installation
 
-This application requires installation of npm (incl. nodemon, dotenv, express, mysql2, sequelize), MySQL, and Insomnia. 
+This application requires installation of npm (incl. nodemon), MongoDB, and Insomnia. 
 
 A walkthrough video can be viewed here: 
 
