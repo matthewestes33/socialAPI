@@ -1,0 +1,21 @@
+{
+    "name": "socialAPI",
+    "version": "1.0.1",
+    "description": "Homework 18 - NoSQL Social Networking API",
+    "main": "server.js",
+    "license": "MIT",
+    "scripts": {
+      "start": "node server.js",
+      "seed": "node utils/seed",
+      "watch": "nodemon"
+    },
+    "author": "Matthew Estes",
+    "dependencies": {
+      "express": "^4.17.1",
+      "mongoose": "^6.0.13"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.9"
+    }
+  }
+  
