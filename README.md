@@ -23,6 +23,8 @@ Referenced documentation and tutorials:
 
 Mongoose Schemas: https://mongoosejs.com/docs/guide.html#schemas
 
+Mongoose Update Validators: https://mongoosejs.com/docs/validation.html#update-validators
+
 Additional assistance:
 
 Thank you to my instructional staff and AskBCS Learning Assistants!
