@@ -1,5 +1,6 @@
 const { Schema, Types } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+// see timeAndDateFormat.js
+const dateFormat = require('../utils/timeAndDateFormat');
 
 //schema to create reaction model
 const reactionSchema = new Schema(
