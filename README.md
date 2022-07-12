@@ -1,7 +1,6 @@
 # socialAPI
 ## NoSQL: Social Networking API
 
-
 This application creates an API for a social media startup that uses a NoSQL database to handle large amounts of unstructured data on a social network website.
 
 ## Mock-up
