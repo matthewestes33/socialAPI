@@ -88,7 +88,7 @@ module.exports = (
     // sets am or pm
     let amOrPm;
 
-    if (dateObj.getHours() >= 12) {
+    if (dateObject.getHours() >= 12) {
         amOrPm = 'pm';
     } else {
         amOrPm = 'am';

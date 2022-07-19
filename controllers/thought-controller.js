@@ -108,6 +108,7 @@ const thoughtController = {
 
     // POST to create a reaction stored in a single thought's reactions array field
     addReaction(req, res) {
+        console.log(JSON.stringify(req.body))
         Thought.findOneAndUpdate(
             // specifies the route parameter
             { _id: req.params.thoughtId },
