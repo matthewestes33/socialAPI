@@ -11,9 +11,11 @@ This application creates an API for a social media startup that uses a NoSQL dat
 
 This application requires installation of npm (incl. express and nodemon), MongoDB, and Insomnia. 
 
-A walkthrough video can be viewed here: 
+A walkthrough video series can be viewed here: 
 
-Part 1: 
+Part 1 (Setup, Users, and Friends): https://drive.google.com/file/d/1yHX0AoX8PkeClwQp72GbuUBQa9T3coo7/view
+Part 2 (Thoughts): https://drive.google.com/file/d/1SsYmMGPu935DIB2_3M4YVE4g7KYoEiHm/view
+Part 3 (Reactions): https://drive.google.com/file/d/15Y4lnXbImT862QSMjPp7MPagv6Vd3EZb/view
 
 All elements of the project can be examined here: https://github.com/matthewestes33/socialAPI 
 
@@ -27,7 +29,7 @@ Mongoose Update Validators: https://mongoosejs.com/docs/validation.html#update-v
 
 Additional assistance:
 
-Thank you to my instructional staff and AskBCS Learning Assistants!
+Thank you to my instructional staff, Zubair Shaikh, and AskBCS Learning Assistants!
 
 ## Features
 
